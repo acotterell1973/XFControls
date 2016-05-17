@@ -13,7 +13,7 @@ namespace XFControls
         public App()
         {
             var indeterminate = new Button { Text = "Indeterminate" };
-            var activityAction = new ActivityActionIndicator {IsRunning = true, Icon = "spinner1.png"};
+            var activityAction = new ActivityActionIndicator {IsRunning = false, Icon = "spinner1.png"};
             indeterminate.Clicked += (sender, args) => activityAction.IsRunning = !activityAction.IsRunning;
             // The root page of your application
             MainPage = new ContentPage
