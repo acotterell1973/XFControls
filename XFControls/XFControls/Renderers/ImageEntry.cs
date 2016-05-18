@@ -23,21 +23,17 @@ namespace XFControls.Renderers
             set { SetValue(TextProperty, value); }
         }
 
-        //public static readonly BindableProperty BottomBorderColorProperty = BindableProperty.Create("BottomBorderColor", typeof(Color), typeof(ImageEntry), Color.Black);
+        public static readonly BindableProperty BottomBorderColorProperty = BindableProperty.Create(
+            propertyName: "BottomBorderColor",
+            returnType: typeof(Color),
+            declaringType: typeof(ImageEntry),
+            defaultValue: Color.Black);
 
-
-
-        //public Color BottomBorderColor
-        //{
-        //    get
-        //    {
-        //        return (Color)GetValue(BottomBorderColorProperty);
-        //    }
-        //    set
-        //    {
-        //        SetValue(BottomBorderColorProperty, value);
-        //    }
-        //}
+        public Color BottomBorderColor
+        {
+            get { return (Color)GetValue(BottomBorderColorProperty); }
+            set { SetValue(BottomBorderColorProperty, value); }
+        }
 
         //public string Text
         //{
@@ -45,11 +41,16 @@ namespace XFControls.Renderers
         //    set { SetValue(Entry.TextProperty, value); }
         //}
 
-        //public string Placeholder
-        //{
-        //    get { return (string)GetValue(Entry.PlaceholderProperty); }
-        //    set { SetValue(Entry.PlaceholderProperty, value); }
-        //}
+        public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create(
+            propertyName: "Placeholder",
+            returnType: typeof(string),
+            declaringType: typeof(ImageEntry),
+            defaultValue: "Placeholder");
+        public string Placeholder
+        {
+            get { return (string)GetValue(Entry.PlaceholderProperty); }
+            set { SetValue(Entry.PlaceholderProperty, value); }
+        }
 
 
         //public ImageEntry()

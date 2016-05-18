@@ -24,7 +24,7 @@ namespace XFControls
                     VerticalOptions = LayoutOptions.Center,
                     Children = {
                         new ImageEntry {
-                         Text  = "From Binding",
+                      Placeholder = "Enter Text",
                          Icon = "person.png"
                         }, activityAction,indeterminate
                     }

@@ -39,6 +39,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\ImageEntry.cs" />
     <Compile Include="Renderers\ActivityActionIndicator.cs" />
+    <Compile Include="Renderers\WrappedTruncatedLabel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
