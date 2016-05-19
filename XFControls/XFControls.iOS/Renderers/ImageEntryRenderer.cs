@@ -74,7 +74,8 @@ namespace XFControls.iOS.Renderers
                     TextColor = UIColor.DarkGray,
  
                 };
-
+                SetMaxLength(_inputView);
+             //   ResizeHeight(_inputView);
                 //Add input box width
                 AddConstraint(NSLayoutConstraint.Create(_inputView, NSLayoutAttribute.Width, NSLayoutRelation.Equal, null, NSLayoutAttribute.Width, 1, 250.0f));
                 _inputView.VerticalAlignment = UIControlContentVerticalAlignment.Bottom;
@@ -92,10 +93,10 @@ namespace XFControls.iOS.Renderers
                         ContentMode = UIViewContentMode.ScaleToFill
                     };
                 
-                CALayer border = new CALayer();
-                nfloat thickness = 1.0f;
-                border.BackgroundColor = UIColor.Black.CGColor;
-                border.Frame = new CGRect(0.0f, _layoutPanel.Frame.Height - thickness, layoutWidth, thickness);
+                var border = new CALayer();
+              
+                border.BackgroundColor = Element.BottomBorderColor.ToCGColor();
+                border.Frame = new CGRect(0.0f, _layoutPanel.Frame.Height - Element.BottomBorderThickness, layoutWidth, Element.BottomBorderThickness);
                 _layoutPanel.Layer.MasksToBounds = true;
                 _layoutPanel.AddSubview(_stackLayout);
                 _layoutPanel.Layer.AddSublayer(border);
@@ -113,20 +114,25 @@ namespace XFControls.iOS.Renderers
                 //  _iconView.Image = UIImage.FromFile("person.png");
             }
         }
+        private void SetMaxLength(UITextField inputField)
+        {
+            inputField.ShouldChangeCharacters = (textField, range, replacementString) =>
+            {
+                var newLength = inputField.Text.Length + replacementString.Length - range.Length;
+                return newLength <= Element.MaxLength;
+            };
+        }
+   
+        private void ResizeHeight(UITextField inputField)
+        {
+            if (Element.HeightRequest >= 0) return;
 
-        /// <summary>
-        /// Resizes the height.
-        /// </summary>
-        //private void ResizeHeight()
-        //{
-        //    if (Element.HeightRequest >= 0) return;
+            var height = Math.Max(Bounds.Height,
+                new UITextField { Font = inputField.Font }.IntrinsicContentSize.Height);
 
-        //    var height = Math.Max(Bounds.Height,
-        //        new UITextField { Font = Control.Font }.IntrinsicContentSize.Height);
+            Control.Frame = new CGRect(0.0f, 0.0f, (nfloat)Element.Width, (nfloat)height);
 
-        //    Control.Frame = new CGRect(0.0f, 0.0f, (nfloat)Element.Width, (nfloat)height);
-
-        //    Element.HeightRequest = height;
-        //}
+            Element.HeightRequest = height;
+        }
     }
 }

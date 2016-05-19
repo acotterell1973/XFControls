@@ -27,7 +27,7 @@ namespace XFControls.Renderers
             propertyName: "BottomBorderColor",
             returnType: typeof(Color),
             declaringType: typeof(ImageEntry),
-            defaultValue: Color.Black);
+            defaultValue: Color.Red);
 
         public Color BottomBorderColor
         {
@@ -35,11 +35,17 @@ namespace XFControls.Renderers
             set { SetValue(BottomBorderColorProperty, value); }
         }
 
-        //public string Text
-        //{
-        //    get { return (string)GetValue(Entry.TextProperty); }
-        //    set { SetValue(Entry.TextProperty, value); }
-        //}
+        public static readonly BindableProperty BottomBorderThicknessProperty = BindableProperty.Create(
+            propertyName: "BottomBorderThickness",
+            returnType: typeof(int),
+            declaringType: typeof(ImageEntry),
+            defaultValue: 2);
+        public int BottomBorderThickness
+        {
+            get { return (int)GetValue(BottomBorderThicknessProperty); }
+            set { SetValue(BottomBorderThicknessProperty, value); }
+        }
+
 
         public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create(
             propertyName: "Placeholder",
@@ -52,6 +58,16 @@ namespace XFControls.Renderers
             set { SetValue(Entry.PlaceholderProperty, value); }
         }
 
+        public static readonly BindableProperty MaxLengthProperty = BindableProperty.Create(
+            propertyName: "MaxLength",
+            returnType: typeof(int),
+            declaringType: typeof(ImageEntry),
+            defaultValue: 100);
+        public int MaxLength
+        {
+            get { return (int)GetValue(MaxLengthProperty); }
+            set { SetValue(MaxLengthProperty, value); }
+        }
 
         //public ImageEntry()
         //{
