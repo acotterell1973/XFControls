@@ -22,7 +22,7 @@ namespace XFControls
                 {
                   
                     VerticalOptions = LayoutOptions.Center,
-                    Children = {
+                    Children = {new StackLayoutExt() { Children = { new Label() { Text = "Shadow"} }},
                         new ImageEntry {
                       Placeholder = "Enter Text",
                          Icon = "person.png"

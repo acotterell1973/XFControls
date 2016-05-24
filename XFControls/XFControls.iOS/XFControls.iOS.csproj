@@ -93,6 +93,7 @@
     <Compile Include="Renderers\AnimatedImageViewRenderer.cs" />
     <Compile Include="Renderers\ImageEntryRenderer.cs" />
     <Compile Include="Renderers\ActivityActionIndicatorRenderer.cs" />
+    <Compile Include="Renderers\StackLayoutExtRenderer.cs" />
     <Compile Include="Renderers\WrappedTruncatedLabelRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
